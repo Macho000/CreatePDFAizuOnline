@@ -1,13 +1,14 @@
 #!/bin/sh -v
-# first arg == contest_name e.g. 255, 254,...
-# second arg == task_name e.g. a, b, c
-# third arg == answer url e.g. https://atcoder.jp/contests/abc254/editorial/4064
+# first arg == id e.g. ITP1_1_A
+# second arg == answer_url e.g. review.jsp?rid=1983386#1
+# third arg == task_name
 i=$1
-j=$2
-answer_url=$3
-url="https://atcoder.jp${answer_url}"
-out="./out/${i}/${j}_Answer.pdf"
-mkdir "./out/${i}"
+answer_url=$2
+task_name=$3
+url="https://judge.u-aizu.ac.jp/onlinejudge/${answer_url}"
+out="./out/IntroductionToProgramming1/${i}_${task_name}_Answer.pdf"
+mkdir "./out"
+mkdir "./out/IntroductionToProgramming1"
 docker run --rm -v $(pwd):/converted/ arachnysdocker/athenapdf athenapdf $url $out
 
 
